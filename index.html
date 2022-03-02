@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSK Profile Picture Generator</title>
+  <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+  <style>
+    html, 
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 18px;
+      background-color: #f1f4ed;    
+    }
+    .fff-profile-picture-generator {
+        max-width: 420px;
+    }
+    .fff-profile-picture-generator--button-group.special-link-collection {
+        flex-direction: column;
+    }
+    .fff-profile-picture-generator--button.special-link {
+        background-color: #1f7644 !important;
+        padding: 0.75rem 1.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: all .2s ease;
+    }
+    .fff-profile-picture-generator--button.special-link:hover {
+        background-color: #1f7644 !important;
+        color: #ffffff !important;
+    }
+    .fff-profile-picture-generator--privacy-note {
+        font-size: .7rem !important;
+    }
+    .fff-profile-picture-generator--language-select.special-link {
+        background-color: #1f7644 !important;
+        border: 0 !important;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .loading-screen{
+        padding: 2rem;
+        text-align: center;
+        filter: brightness(10);
+    }
+    .fff-profile-picture-generator--image {
+        border-radius: 100%;
+        overflow: hidden;
+        margin-bottom:27px;
+    }
+  </style>
+</head>
+<body>
+  <div id="pfp-container"></div>
+  <script type="application/javascript" src="https://fridaysforfuture.de/src/profile-picture-generator.js"></script>
+  <script type="application/javascript" defer="">
+    window.onload = function () { 
+      window.ProfilePictureGenerator({ 
+        container: document.getElementById('pfp-container'), 
+        initialLanguage: 'pl', 
+        languages: { 
+          pl: { 
+            name: 'PL',
+            uploadButtonTitle: "Generuj własne profilowe", 
+            downloadButtonTitle: "Pobierz", 
+            imageAltText: "Podgląd", 
+            fileName: "Zdjęcie-Profilowe.png", 
+            imagePreview: "preview.png", 
+            templateUrl: "template.png", 
+            privacyNote: "Wybrany plik nie jest wysyłany do żadnego serwera. Cała generacja zdjęcia ma miejsce w przeglądarce.", 
+            privacyLinkText: "", 
+            privacyLink: "", 
+            templateRenderFunction: function(t){return[{type:"IMAGE_SQUARE",offset:0,size:Math.max(t.width,t.height),src:t.src,rotation:t.srcRotation},{type:"IMAGE_SQUARE",offset:0,size:Math.max(t.width,t.height),src:t.template,rotation:1}]}
+          } 
+        } 
+        }); 
+      }; 
+    </script>
+</body>
+</html>
